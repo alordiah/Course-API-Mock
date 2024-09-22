@@ -32,6 +32,7 @@ function handleGetCourses (query){
     try {
       for (const course of courses.courses){
        if (query == course.id) response = course;
+       else response = "Amigo, we can't find that course";
       }
     } catch (error) {
       console.log(error);

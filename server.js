@@ -24,9 +24,14 @@ app.get('/', async (req, res) => {
   res.header("Access-Control-Allow-Origin", "*");
   const query = req.body;
   const response = await handleGetCourses(query.id);
-  console.log(response.code)
   res.status(response.code).send(response.course)
   });
+
+  app.get('/courses', async (req, res) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    // const response = await handleGetCourses(query.id);
+    res.status(200).send(courses)
+    });
 
 function handleGetCourses (query){
     let response = {}
@@ -37,7 +42,6 @@ function handleGetCourses (query){
        if (query == course.id) {
          response.code = 200
          response.course = course;
-         console.log(response)
        }
     }
     } catch (error) {

@@ -24,16 +24,22 @@ app.get('/', async (req, res) => {
   res.header("Access-Control-Allow-Origin", "*");
   const query = req.body;
   const response = await handleGetCourses(query.id);
-  res.status(200).send(response)
+  console.log(response.code)
+  res.status(response.code).send(response.course)
   });
 
 function handleGetCourses (query){
-    let response;
+    let response = {}
     try {
+      response.course ="Amigo, we can't find that course.";
+      response.code = 400;
       for (const course of courses.courses){
-       if (query == course.id) response = course;
-       // else response = "Amigo, we can't find that course";
-      }
+       if (query == course.id) {
+         response.code = 200
+         response.course = course;
+         console.log(response)
+       }
+    }
     } catch (error) {
       console.log(error);
     }

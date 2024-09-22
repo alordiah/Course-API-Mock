@@ -39,3 +39,5 @@ function handleGetCourses (query){
     return response;
 
 }
+
+module.exports = app;

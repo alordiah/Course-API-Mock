@@ -19,7 +19,7 @@ app.listen(port, () => {
 
 
 
-app.get('/courses', async (req, res) => {
+app.get('/', async (req, res) => {
   //the star here is a wildcard, it means we are accepting request from any IP. This is typically unsafe to use in production.
   res.header("Access-Control-Allow-Origin", "*");
   const query = req.body;
